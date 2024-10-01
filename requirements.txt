@@ -168,3 +168,4 @@ yfinance
 scikit-learn
 pandas
 keras
+tensorflow
