@@ -384,8 +384,8 @@ if button:
     asset=st.text_input('Enter a asset name')
     if asset:
         x=calc_high(asset=asset)
-        if x:
-          st.write(x)
+        st.write(x)
+        
       
 
 
