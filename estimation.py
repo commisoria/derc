@@ -380,11 +380,12 @@ def calc_high(asset):
 
 button=st.button('Calc')
 
+asset=st.text_input('Enter an asset name:")
+button=st.button('Calc')
+x=calc_high(asset=asset)
 if button:
-    asset=st.text_input('Enter a asset name')
-    if asset:
-        x=calc_high(asset=asset)
-        st.write(x)
+    st.write(x)
+    
         
       
 
