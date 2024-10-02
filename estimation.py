@@ -376,10 +376,6 @@ def calc_high(asset):
 
     return estimation
 
-
-
-button=st.button('Calc')
-
 asset=st.text_input("Enter an asset name:")
 button=st.button('Calc')
 
