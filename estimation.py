@@ -5,7 +5,7 @@ from datetime import time,datetime
 import numpy as np
 import streamlit as st
 import requests
-import json
+
 
 #-------------------------------------------------------------------------IP--------------------------------
 def get_public_ip():
@@ -23,11 +23,10 @@ st.write(public_ip)
 
 def get_orders(pair, depth):
     response = requests.get(f'https://data.binance.com/api/v3/depth?symbol={pair}&limit={depth}')
-    byte_json = response.content
-    orders_json = json.loads(byte_json)
-    return orders_json
+    return response
 
-st.write(get_orders('BTCBUSD', 5))
+
+
 
 
 
