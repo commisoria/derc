@@ -1,6 +1,6 @@
 import yfinance as yf
 import pandas as pd
-FROM binance.client import Client
+from binance.client import Client
 from datetime import time,datetime
 import numpy as np
 import streamlit as st
