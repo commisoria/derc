@@ -1,7 +1,6 @@
 import yfinance as yf
 import pandas as pd
 from binance.client import Client
-from binance.exceptions import BinanceAPIException, BinanceRequestException, BinanceWithdrawException
 from datetime import time,datetime
 import numpy as np
 import streamlit as st
