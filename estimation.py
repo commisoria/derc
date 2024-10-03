@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
 from binance.client import Client
+from binance.exceptions import BinanceAPIException, BinanceRequestException, BinanceWithdrawException
 from datetime import time,datetime
 import numpy as np
 import streamlit as st
@@ -21,14 +22,20 @@ st.write(public_ip)
 api_key='9WY9XfdvHWcCcN9Gn3ajwipyNNMK10DXU3HcodLxPyMbQJ5R4Gg1VbdApH0W9cZD'
 api_secret='bYWcoKb4iEz6GWRORww970rdsLsvWdEOGNFEJ2Zsr2CqrAqCf4ICEnKsqLhDnkV9'
 client=Client(api_key=api_key,api_secret=api_secret)
-# Get account information
-account_info = client.get_account()
 
-# Find the balance for PAXG
-for balance in account_info['balances']:
-    if balance['asset'] == 'PAXG':
-        st.write(balance['free'])
-
+try:
+    account_info = client.get_account()
+    for balance in account_info['balances']:
+        if balance['asset'] == 'PAXG':
+            st.write(balance['free'])
+except BinanceAPIException as e:
+    st.write(e)
+except BinanceRequestException as e:
+    st.write(e)
+except BinanceWithdrawException as e:
+    st.write(e)
+except Exception as e:
+    st.write(e)
 
 
 
