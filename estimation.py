@@ -71,7 +71,10 @@ def calc_high(asset):
     return estimation
 
 
+asset='PAXG'
+result=calc_high(asset)
 
+st.write(result)
 
 
 
