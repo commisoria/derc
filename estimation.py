@@ -4,7 +4,9 @@ from datetime import time,datetime
 import numpy as np
 import streamlit as st
 import requests
-
+from sklearn.preprocessing import StandardScaler,MinMaxScaler
+from keras.models import Sequential
+from keras.layers import Dense,LTSM,Dropout
 
 #-------------------------------------------------------------------------IP--------------------------------
 def get_public_ip():
