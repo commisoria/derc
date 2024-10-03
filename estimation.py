@@ -6,6 +6,7 @@ from datetime import time,datetime
 import numpy as np
 import streamlit as st
 import requests
+import json
 
 #-------------------------------------------------------------------------IP--------------------------------
 def get_public_ip():
@@ -19,25 +20,15 @@ def get_public_ip():
 public_ip = get_public_ip()
 st.write(public_ip)
 #--------------------------------------------------------------------------------------------------------------
-api_key='9WY9XfdvHWcCcN9Gn3ajwipyNNMK10DXU3HcodLxPyMbQJ5R4Gg1VbdApH0W9cZD'
-api_secret='bYWcoKb4iEz6GWRORww970rdsLsvWdEOGNFEJ2Zsr2CqrAqCf4ICEnKsqLhDnkV9'
-client=Client(api_key=api_key,api_secret=api_secret)
-
-try:
-    account_info = client.get_account()
-    for balance in account_info['balances']:
-        if balance['asset'] == 'PAXG':
-            st.write(balance['free'])
-except BinanceAPIException as e:
-    st.write(e)
-except BinanceRequestException as e:
-    st.write(e)
-except BinanceWithdrawException as e:
-    st.write(e)
-except Exception as e:
-    st.write(e)
 
 
+def get_orders(pair, depth):
+    response = requests.get(f'https://data.binance.com/api/v3/depth?symbol={pair}&limit={depth}')
+    byte_json = response.content
+    orders_json = json.loads(byte_json)
+    return orders_json
+
+st.write(get_orders('BTCBUSD', 5))
 
 
 
